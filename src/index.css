@@ -1,0 +1,3509 @@
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(
+        135deg,
+        #f8fafc,
+        #eef2ff
+    );
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+nav {
+    width: 100%;
+    min-height: 70px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 40px;
+
+    background: #0f172a;
+    color: white;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.15);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav > div {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+nav a {
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #93c5fd;
+}
+
+nav button {
+    border: none;
+    background: #ef4444;
+    color: white;
+
+    padding: 9px 16px;
+    border-radius: 6px;
+
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+nav button:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    padding: 30px;
+}
+
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #0f172a;
+}
+
+h2 {
+    color: #1e293b;
+}
+
+h3 {
+    color: #334155;
+}
+
+
+/* =========================================================
+   VEHICLES GRID
+========================================================= */
+
+.vehicles {
+    max-width: 1250px;
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 25px;
+}
+
+
+/* =========================================================
+   VEHICLE CARD
+========================================================= */
+
+.card {
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 6px 20px rgba(15, 23, 42, 0.10);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.16);
+}
+
+.card img {
+    width: 100%;
+    height: 210px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    display: block;
+
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.card p {
+    margin: 7px 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   VEHICLE BUTTON ROW
+========================================================= */
+
+.card-actions {
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 8px;
+
+    width: 100%;
+
+    margin-top: 18px;
+}
+
+.card-actions a,
+.card-actions button {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 10px 6px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.card-actions a:hover,
+.card-actions button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.view-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.wishlist-btn {
+    background: #ec4899;
+    color: white;
+}
+
+.edit-btn {
+    background: #f59e0b;
+    color: white;
+}
+
+.delete-btn {
+    background: #ef4444;
+    color: white;
+}
+
+
+/* =========================================================
+   VEHICLE CONTROLS
+========================================================= */
+
+.vehicle-controls {
+    max-width: 1250px;
+
+    margin: 0 auto 30px;
+
+    padding: 20px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 18px rgba(15, 23, 42, 0.08);
+
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr 1fr 1fr;
+
+    gap: 12px;
+}
+
+.search-box,
+.vehicle-controls select {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    background: white;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.search-box:focus,
+.vehicle-controls select:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.result-count {
+    max-width: 1250px;
+
+    margin: 0 auto 20px;
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+.no-results {
+    text-align: center;
+
+    background: white;
+
+    max-width: 600px;
+
+    margin: 40px auto;
+
+    padding: 50px 20px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 18px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================================
+   VEHICLE DETAILS
+========================================================= */
+
+.details {
+    max-width: 850px;
+
+    margin: 30px auto;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 7px 25px rgba(15, 23, 42, 0.10);
+}
+
+.details img {
+    width: 100%;
+
+    max-height: 450px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    margin-bottom: 25px;
+}
+
+.details h1 {
+    text-align: left;
+
+    margin-bottom: 15px;
+}
+
+.details h3 {
+    margin-top: 20px;
+
+    margin-bottom: 5px;
+}
+
+.details p {
+    color: #64748b;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   RENT BUTTON
+========================================================= */
+
+.rent-btn {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #16a34a;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.rent-btn:hover {
+    background: #15803d;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   FORMS
+========================================================= */
+
+.form-container {
+    max-width: 450px;
+
+    margin: 50px auto;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 7px 25px rgba(15, 23, 42, 0.10);
+}
+
+.form-container h1 {
+    margin-bottom: 25px;
+}
+
+.form-container form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+.form-container input:focus,
+.form-container select:focus,
+.form-container textarea:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.form-container button {
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.form-container button:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   WISHLIST
+========================================================= */
+
+.wishlist-container {
+    max-width: 1200px;
+
+    margin: 30px auto;
+
+    padding: 20px;
+}
+
+.wishlist-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.wishlist-card {
+    background: white;
+
+    padding: 18px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 6px 20px rgba(15, 23, 42, 0.10);
+}
+
+.wishlist-card img {
+    width: 100%;
+
+    height: 200px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    margin-bottom: 15px;
+}
+
+.wishlist-card h2 {
+    margin-bottom: 10px;
+}
+
+.wishlist-card p {
+    margin: 7px 0;
+
+    color: #64748b;
+}
+
+.wishlist-card button {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 10px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #ef4444;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.wishlist-card button:hover {
+    background: #dc2626;
+}
+
+
+/* =========================================================
+   BOOKING PAGE
+========================================================= */
+
+.booking-container {
+    max-width: 650px;
+
+    margin: 40px auto;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 7px 25px rgba(15, 23, 42, 0.10);
+}
+
+.booking-container h1 {
+    margin-bottom: 25px;
+}
+
+.booking-container form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.booking-container label {
+    font-weight: bold;
+
+    color: #334155;
+}
+
+.booking-container input {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 7px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    outline: none;
+}
+
+.booking-container button {
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #16a34a;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.booking-summary {
+    margin: 20px 0;
+
+    padding: 18px;
+
+    background: #f8fafc;
+
+    border-radius: 10px;
+
+    border: 1px solid #e2e8f0;
+}
+
+
+/* =========================================================
+   MY BOOKINGS
+========================================================= */
+
+.bookings-container {
+    max-width: 1100px;
+
+    margin: 40px auto;
+
+    padding: 20px;
+}
+
+.bookings-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.booking-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 6px 20px rgba(15, 23, 42, 0.10);
+}
+
+.booking-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.booking-header h2 {
+    font-size: 21px;
+}
+
+.status-confirmed {
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    background: #dcfce7;
+
+    color: #15803d;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+.status-cancelled {
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+.booking-details p {
+    margin: 10px 0;
+
+    color: #475569;
+}
+
+.booking-total {
+    margin-top: 18px !important;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #e2e8f0;
+
+    font-size: 18px;
+
+    color: #1e3a8a !important;
+}
+
+.cancel-booking-btn {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 11px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #dc2626;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.cancel-booking-btn:hover {
+    background: #b91c1c;
+}
+
+.no-bookings {
+    text-align: center;
+
+    background: white;
+
+    padding: 60px 20px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.no-bookings h2 {
+    margin-bottom: 10px;
+}
+
+.no-bookings p {
+    color: #64748b;
+}
+
+
+/* =========================================================
+   HOME PAGE
+========================================================= */
+
+.hero {
+    min-height: 500px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dbeafe,
+            #ede9fe
+        );
+
+    border-radius: 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 650px;
+
+    font-size: 19px;
+
+    color: #475569;
+
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+.hero-buttons a {
+    padding: 13px 25px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+}
+
+.hero-primary {
+    background: #2563eb;
+
+    color: white;
+}
+
+.hero-secondary {
+    background: white;
+
+    color: #2563eb;
+
+    border: 1px solid #2563eb;
+}
+
+.hero-primary:hover,
+.hero-secondary:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+/* Tablets */
+
+@media (max-width: 1000px) {
+
+    .vehicles {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .wishlist-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .vehicle-controls {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 750px) {
+
+    nav {
+        padding: 12px 18px;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    nav > div {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px;
+    }
+
+    main {
+        padding: 18px 12px;
+    }
+
+    .vehicles {
+        grid-template-columns: 1fr;
+    }
+
+    .wishlist-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bookings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vehicle-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: 450px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        width: 100%;
+
+        max-width: 300px;
+    }
+
+    .details {
+        padding: 20px;
+    }
+
+}
+
+
+/* Small Mobile */
+
+@media (max-width: 500px) {
+
+    .card-actions {
+        flex-direction: column;
+    }
+
+    .card-actions a,
+    .card-actions button {
+        width: 100%;
+    }
+
+    .form-container {
+        margin: 25px auto;
+
+        padding: 20px;
+    }
+
+    .booking-container {
+        padding: 20px;
+    }
+
+    .booking-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+}
+@media (max-width: 750px) {
+
+    .navbar {
+        flex-direction: column;
+
+        justify-content: center;
+
+        gap: 14px;
+
+        padding: 15px 18px;
+    }
+
+    .navbar-logo {
+        margin-right: 0;
+    }
+
+    .navbar-links {
+        width: 100%;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 12px 18px;
+    }
+
+    .navbar-auth {
+        justify-content: center;
+    }
+
+}
+@media (max-width: 500px) {
+
+    .navbar-links {
+        gap: 10px 14px;
+    }
+
+    .navbar-links a {
+        font-size: 13px;
+    }
+
+    .navbar-logo a {
+        font-size: 21px;
+    }
+
+}
+/* =========================================================
+   HOME PAGE - FINAL UI
+========================================================= */
+
+.home-page {
+    width: 100%;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero-section {
+    max-width: 1300px;
+
+    min-height: 520px;
+
+    margin: 0 auto;
+
+    padding: 70px 70px;
+
+    border-radius: 24px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dbeafe,
+            #ede9fe
+        );
+
+    box-shadow:
+        0 10px 35px
+        rgba(15, 23, 42, 0.10);
+}
+
+.hero-content {
+    max-width: 650px;
+
+    position: relative;
+
+    z-index: 3;
+}
+
+.hero-tag {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    padding: 8px 14px;
+
+    border-radius: 20px;
+
+    background: white;
+
+    color: #2563eb;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.hero-content h1 {
+    text-align: left;
+
+    font-size: 58px;
+
+    line-height: 1.05;
+
+    margin-bottom: 22px;
+
+    color: #0f172a;
+}
+
+.hero-content h1 span {
+    display: block;
+
+    color: #2563eb;
+}
+
+.hero-content p {
+    max-width: 570px;
+
+    color: #475569;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+}
+
+.hero-buttons a {
+    display: inline-block;
+
+    padding: 13px 22px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.hero-buttons a:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 18px
+        rgba(15, 23, 42, 0.15);
+}
+
+.hero-primary {
+    background: #2563eb;
+
+    color: white;
+}
+
+.hero-secondary {
+    background: white;
+
+    color: #2563eb;
+
+    border: 1px solid #bfdbfe;
+}
+
+
+/* =========================================================
+   HERO VEHICLE DECORATION
+========================================================= */
+
+.hero-vehicle {
+    position: absolute;
+
+    right: 100px;
+
+    bottom: 75px;
+
+    font-size: 170px;
+
+    z-index: 2;
+
+    filter:
+        drop-shadow(
+            0 15px 15px
+            rgba(15, 23, 42, 0.15)
+        );
+
+    animation:
+        floating-car 3s ease-in-out infinite;
+}
+
+@keyframes floating-car {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Decorative circles */
+
+.hero-circle {
+    position: absolute;
+
+    border-radius: 50%;
+
+    z-index: 1;
+}
+
+.circle-one {
+    width: 280px;
+
+    height: 280px;
+
+    right: 40px;
+
+    top: -80px;
+
+    background:
+        rgba(255, 255, 255, 0.35);
+}
+
+.circle-two {
+    width: 180px;
+
+    height: 180px;
+
+    right: 300px;
+
+    bottom: -80px;
+
+    background:
+        rgba(255, 255, 255, 0.25);
+}
+
+
+/* =========================================================
+   COMMON SECTION
+========================================================= */
+
+.home-section,
+.why-section {
+    max-width: 1250px;
+
+    margin: 80px auto;
+
+    padding: 0 20px;
+}
+
+.section-heading {
+    text-align: center;
+
+    max-width: 700px;
+
+    margin: 0 auto 40px;
+}
+
+.section-heading > span {
+    color: #2563eb;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    font-size: 34px;
+
+    margin: 10px 0 12px;
+
+    color: #0f172a;
+}
+
+.section-heading p {
+    color: #64748b;
+
+    line-height: 1.6;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   CATEGORY CARDS
+========================================================= */
+
+.category-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.category-card {
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow:
+        0 6px 20px
+        rgba(15, 23, 42, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 12px 28px
+        rgba(15, 23, 42, 0.13);
+}
+
+.category-icon {
+    width: 75px;
+
+    height: 75px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #eff6ff;
+
+    font-size: 35px;
+}
+
+.category-card h3 {
+    font-size: 21px;
+
+    margin-bottom: 12px;
+
+    color: #0f172a;
+}
+
+.category-card p {
+    color: #64748b;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+
+    min-height: 70px;
+
+    margin-bottom: 20px;
+}
+
+.category-card a {
+    color: #2563eb;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+.category-card a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   WHY CHOOSE US
+========================================================= */
+
+.why-section {
+    max-width: 1300px;
+
+    padding: 60px 40px;
+
+    border-radius: 20px;
+
+    background: #f8fafc;
+}
+
+.features-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.feature-card {
+    padding: 25px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    border: 1px solid #e2e8f0;
+
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #bfdbfe;
+
+    box-shadow:
+        0 8px 20px
+        rgba(15, 23, 42, 0.08);
+}
+
+.feature-icon {
+    font-size: 32px;
+
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+
+    color: #0f172a;
+}
+
+.feature-card p {
+    color: #64748b;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.home-cta {
+    max-width: 1200px;
+
+    margin: 70px auto 30px;
+
+    padding: 40px 45px;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1d4ed8,
+            #4338ca
+        );
+
+    color: white;
+
+    box-shadow:
+        0 10px 30px
+        rgba(37, 99, 235, 0.20);
+}
+
+.home-cta h2 {
+    color: white;
+
+    margin-bottom: 8px;
+
+    font-size: 28px;
+}
+
+.home-cta p {
+    color: #dbeafe;
+
+    line-height: 1.5;
+}
+
+.cta-button {
+    padding: 13px 22px;
+
+    background: white;
+
+    color: #1d4ed8;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 18px
+        rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   HOME RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .hero-section {
+        padding: 60px 40px;
+    }
+
+    .hero-content h1 {
+        font-size: 46px;
+    }
+
+    .hero-vehicle {
+        right: 30px;
+
+        font-size: 130px;
+
+        opacity: 0.35;
+    }
+
+    .features-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .hero-section {
+        min-height: 500px;
+
+        padding: 50px 25px;
+
+        text-align: center;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        text-align: center;
+
+        font-size: 40px;
+    }
+
+    .hero-content p {
+        margin-left: auto;
+
+        margin-right: auto;
+
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+
+        flex-wrap: wrap;
+    }
+
+    .hero-vehicle {
+        right: 50%;
+
+        transform: translateX(50%);
+
+        bottom: 20px;
+
+        font-size: 100px;
+
+        opacity: 0.20;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .why-section {
+        padding: 45px 20px;
+    }
+
+    .home-cta {
+        margin: 50px 15px 25px;
+
+        padding: 30px 25px;
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-tag {
+        font-size: 10px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .section-heading h2 {
+        font-size: 28px;
+    }
+
+    .home-cta h2 {
+        font-size: 23px;
+    }
+
+}
+/* =========================================================
+   PROFESSIONAL VEHICLE CARDS
+========================================================= */
+
+.vehicle-card {
+    background: white;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 6px 20px
+        rgba(15, 23, 42, 0.09);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 14px 30px
+        rgba(15, 23, 42, 0.15);
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.vehicle-image-wrapper {
+    height: 220px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #f1f5f9;
+}
+
+.vehicle-card-image {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform 0.4s ease;
+}
+
+.vehicle-card:hover .vehicle-card-image {
+    transform: scale(1.06);
+}
+
+
+/* =========================================================
+   AVAILABILITY BADGE
+========================================================= */
+
+.availability {
+    position: absolute;
+
+    top: 14px;
+
+    right: 14px;
+
+    padding: 6px 11px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    backdrop-filter: blur(5px);
+}
+
+.availability.available {
+    background: #dcfce7;
+
+    color: #15803d;
+}
+
+.availability.unavailable {
+    background: #fee2e2;
+
+    color: #b91c1c;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.vehicle-card-content {
+    padding: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.vehicle-title-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 4px;
+}
+
+.vehicle-title-row h3 {
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: 20px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.rating {
+    flex-shrink: 0;
+
+    padding: 5px 8px;
+
+    border-radius: 6px;
+
+    background: #fff7ed;
+
+    color: #c2410c;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.vehicle-brand {
+    color: #64748b;
+
+    font-size: 14px;
+
+    margin: 0 0 14px;
+}
+
+
+/* =========================================================
+   VEHICLE INFO
+========================================================= */
+
+.vehicle-info {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-bottom: 13px;
+}
+
+.vehicle-info span {
+    padding: 6px 8px;
+
+    border-radius: 6px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    color: #475569;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.vehicle-location {
+    color: #64748b;
+
+    font-size: 13px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+.vehicle-price {
+    padding-top: 14px;
+
+    margin-top: auto;
+
+    border-top: 1px solid #e2e8f0;
+
+    margin-bottom: 2px;
+}
+
+.price-label {
+    display: block;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+
+    margin-bottom: 3px;
+}
+
+.vehicle-price strong {
+    color: #0f172a;
+
+    font-size: 22px;
+}
+
+.price-day {
+    color: #64748b;
+
+    font-size: 12px;
+
+    margin-left: 3px;
+}
+
+
+/* =========================================================
+   CARD BUTTONS
+========================================================= */
+
+.vehicle-card .card-actions {
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 7px;
+
+    width: 100%;
+
+    margin-top: 15px;
+}
+
+.vehicle-card .card-actions a,
+.vehicle-card .card-actions button {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 10px 5px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.vehicle-card .card-actions a:hover,
+.vehicle-card .card-actions button:hover {
+    transform: translateY(-2px);
+
+    opacity: 0.9;
+}
+
+
+/* Button colors */
+
+.vehicle-card .view-btn {
+    background: #2563eb;
+
+    color: white;
+}
+
+.vehicle-card .wishlist-btn {
+    background: #ec4899;
+
+    color: white;
+}
+
+.vehicle-card .edit-btn {
+    background: #f59e0b;
+
+    color: white;
+}
+
+.vehicle-card .delete-btn {
+    background: #ef4444;
+
+    color: white;
+}
+
+
+/* =========================================================
+   VEHICLE CARD RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .vehicle-card .card-actions {
+        gap: 5px;
+    }
+
+    .vehicle-card .card-actions a,
+    .vehicle-card .card-actions button {
+        font-size: 10px;
+
+        padding: 9px 3px;
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .vehicle-image-wrapper {
+        height: 240px;
+    }
+
+    .vehicle-title-row h3 {
+        font-size: 19px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .vehicle-card .card-actions {
+        flex-direction: column;
+    }
+
+    .vehicle-card .card-actions a,
+    .vehicle-card .card-actions button {
+        width: 100%;
+
+        font-size: 13px;
+
+        padding: 10px;
+    }
+
+}
+ /* ========================================
+    VEHICLE DETAILS PAGE
+ ======================================== */
+
+.vehicle-details-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.back-btn {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 25px;
+    padding: 10px 0;
+}
+
+.back-btn:hover {
+    opacity: 0.7;
+}
+
+.vehicle-details-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* ========================================
+   BOOKING PAGE
+======================================== */
+
+.booking-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.booking-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+
+/* ========================================
+   VEHICLE SUMMARY
+======================================== */
+
+.booking-vehicle-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+.booking-image-wrapper {
+    position: relative;
+    height: 300px;
+    background: #f3f4f6;
+    overflow: hidden;
+}
+
+.booking-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.booking-available {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    background: white;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.booking-vehicle-content {
+    padding: 25px;
+}
+
+.booking-category {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0 0 7px;
+}
+
+.booking-vehicle-content h1 {
+    font-size: 30px;
+    margin: 0;
+}
+
+.booking-brand {
+    font-size: 17px;
+    margin: 7px 0 20px;
+}
+
+.booking-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.booking-info span {
+    background: #f7f7f7;
+    padding: 11px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.booking-price {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.booking-price span {
+    display: block;
+    font-size: 13px;
+}
+
+.booking-price strong {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 27px;
+}
+
+
+/* ========================================
+   BOOKING FORM
+======================================== */
+
+.booking-form-card {
+    background: white;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+.booking-heading p {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0 0 7px;
+}
+
+.booking-heading h2 {
+    font-size: 30px;
+    margin: 0;
+}
+
+.booking-heading span {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+
+/* ========================================
+   DATE FIELDS
+======================================== */
+
+.date-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.date-field label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.date-field input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+}
+
+.date-field input:focus {
+    border-color: #555;
+}
+
+
+/* ========================================
+   PRICE SUMMARY
+======================================== */
+
+.booking-summary {
+    margin-top: 30px;
+    padding: 22px;
+    border-radius: 15px;
+    background: #f7f7f7;
+}
+
+.booking-summary h3 {
+    margin: 0 0 18px;
+    font-size: 19px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+.summary-divider {
+    height: 1px;
+    background: #ddd;
+    margin: 18px 0;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-total span {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.summary-total strong {
+    font-size: 25px;
+}
+
+
+/* ========================================
+   CONFIRM BOOKING BUTTON
+======================================== */
+
+.confirm-booking-btn {
+    width: 100%;
+    margin-top: 25px;
+    border: none;
+    padding: 15px;
+    border-radius: 11px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.confirm-booking-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   BOOKING RESPONSIVE
+======================================== */
+
+@media (max-width: 850px) {
+
+    .booking-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-image-wrapper {
+        height: 320px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .booking-page {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .booking-form-card {
+        padding: 25px 20px;
+    }
+
+    .booking-image-wrapper {
+        height: 260px;
+    }
+
+    .booking-info {
+        grid-template-columns: 1fr;
+    }
+
+    .date-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-heading h2 {
+        font-size: 25px;
+    }
+
+}
+
+/* ========================================
+   VEHICLE IMAGE
+======================================== */
+
+.details-image-section {
+    position: relative;
+    height: 420px;
+    background: #f3f4f6;
+    overflow: hidden;
+}
+
+.details-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* ========================================
+   AVAILABILITY
+======================================== */
+
+.details-availability {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 9px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    background: white;
+}
+
+
+/* ========================================
+   DETAILS CONTENT
+======================================== */
+
+.details-content {
+    padding: 40px;
+}
+
+.details-title-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.details-category {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0 0 8px;
+}
+
+.details-title-row h1 {
+    font-size: 38px;
+    margin: 0;
+}
+
+.details-brand {
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+.details-rating {
+    font-size: 18px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.details-rating span {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+
+/* ========================================
+   DESCRIPTION
+======================================== */
+
+.details-description {
+    margin-top: 30px;
+}
+
+.details-description h3 {
+    margin-bottom: 10px;
+}
+
+.details-description p {
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   VEHICLE INFORMATION
+======================================== */
+
+.details-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border-radius: 12px;
+    background: #f7f7f7;
+}
+
+.detail-item > span {
+    font-size: 24px;
+}
+
+.detail-item small {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.detail-item strong {
+    display: block;
+    font-size: 15px;
+}
+
+
+/* ========================================
+   PRICE SECTION
+======================================== */
+
+.details-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid #ddd;
+}
+
+.details-price span {
+    display: block;
+    font-size: 13px;
+}
+
+.details-price h2 {
+    margin: 5px 0 0;
+    font-size: 30px;
+}
+
+.details-price h2 small {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+/* ========================================
+   RENT BUTTON
+======================================== */
+
+.rent-btn {
+    border: none;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.rent-btn:hover {
+    transform: translateY(-2px);
+}
+
+.rent-btn.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+
+/* ========================================
+   LOADING
+======================================== */
+
+.details-loading {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+
+/* ========================================
+   DETAILS RESPONSIVE
+======================================== */
+
+@media (max-width: 850px) {
+
+    .vehicle-details-card {
+        grid-template-columns: 1fr;
+    }
+
+    .details-image-section {
+        height: 350px;
+    }
+
+    .details-image {
+        height: 350px;
+    }
+
+    .details-content {
+        padding: 30px 20px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .vehicle-details-page {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .details-image-section {
+        height: 280px;
+    }
+
+    .details-image {
+        height: 280px;
+    }
+
+    .details-title-row {
+        flex-direction: column;
+    }
+
+    .details-title-row h1 {
+        font-size: 30px;
+    }
+
+    .details-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .details-price {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .rent-btn {
+        width: 100%;
+    }
+
+}
+/* ========================================
+   WISHLIST PAGE
+======================================== */
+
+.wishlist-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+/* ========================================
+   WISHLIST HEADER
+======================================== */
+
+.wishlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.wishlist-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin: 0 0 8px;
+}
+
+.wishlist-header h1 {
+    font-size: 38px;
+    margin: 0;
+}
+
+.wishlist-header p:not(.wishlist-label) {
+    margin: 8px 0 0;
+}
+
+.wishlist-count {
+    padding: 10px 18px;
+    border-radius: 20px;
+    background: #f3f4f6;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* ========================================
+   WISHLIST GRID
+======================================== */
+
+.wishlist-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(3, 1fr);
+    gap: 25px;
+}
+
+
+/* ========================================
+   WISHLIST CARD
+======================================== */
+
+.wishlist-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.wishlist-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.12);
+}
+
+
+/* ========================================
+   WISHLIST IMAGE
+======================================== */
+
+.wishlist-image-wrapper {
+    position: relative;
+    height: 220px;
+    background: #f3f4f6;
+    overflow: hidden;
+}
+
+.wishlist-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.wishlist-image-wrapper span {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    background: white;
+
+    padding: 8px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* ========================================
+   WISHLIST CONTENT
+======================================== */
+
+.wishlist-card-content {
+    padding: 20px;
+}
+
+.wishlist-title-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.wishlist-title-row h2 {
+    font-size: 21px;
+    margin: 0;
+}
+
+.wishlist-title-row p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+.wishlist-title-row strong {
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   WISHLIST INFO
+======================================== */
+
+.wishlist-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+
+    margin-top: 18px;
+}
+
+.wishlist-info span {
+    padding: 8px;
+
+    border-radius: 8px;
+
+    background: #f7f7f7;
+
+    font-size: 12px;
+}
+
+
+/* ========================================
+   WISHLIST PRICE
+======================================== */
+
+.wishlist-bottom {
+    margin-top: 20px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #e5e5e5;
+}
+
+.wishlist-bottom small {
+    display: block;
+
+    font-size: 11px;
+
+    margin-bottom: 3px;
+}
+
+.wishlist-bottom strong {
+    font-size: 23px;
+}
+
+.wishlist-bottom span {
+    font-size: 13px;
+}
+
+
+/* ========================================
+   WISHLIST ACTIONS
+======================================== */
+
+.wishlist-actions {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+.wishlist-view-btn,
+.wishlist-remove-btn {
+    border: none;
+
+    padding: 11px;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.wishlist-view-btn {
+    background: #111827;
+    color: white;
+}
+
+.wishlist-remove-btn {
+    background: #f3f4f6;
+    color: #333;
+}
+
+.wishlist-view-btn:hover,
+.wishlist-remove-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   EMPTY WISHLIST
+======================================== */
+
+.wishlist-empty {
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.06);
+}
+
+.empty-icon {
+    font-size: 55px;
+
+    margin-bottom: 15px;
+}
+
+.wishlist-empty h2 {
+    margin: 0;
+    font-size: 26px;
+}
+
+.wishlist-empty p {
+    margin: 10px 0 25px;
+}
+
+.wishlist-empty button {
+    border: none;
+
+    padding: 13px 22px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* ========================================
+   WISHLIST RESPONSIVE
+======================================== */
+
+@media (max-width: 950px) {
+
+    .wishlist-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .wishlist-page {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .wishlist-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .wishlist-header h1 {
+        font-size: 30px;
+    }
+
+    .wishlist-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wishlist-image-wrapper {
+        height: 240px;
+    }
+
+}
+/* ========================================
+   MY BOOKINGS PAGE
+======================================== */
+
+.bookings-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+/* ========================================
+   PAGE HEADER
+======================================== */
+
+.bookings-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.bookings-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin: 0 0 8px;
+}
+
+.bookings-page-header h1 {
+    font-size: 38px;
+    margin: 0;
+}
+
+.bookings-page-header p:not(.bookings-label) {
+    margin: 8px 0 0;
+}
+
+.booking-count {
+    background: #f3f4f6;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* ========================================
+   BOOKINGS GRID
+======================================== */
+
+.bookings-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(2, 1fr);
+    gap: 25px;
+}
+
+
+/* ========================================
+   BOOKING CARD
+======================================== */
+
+.booking-card {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.booking-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.11);
+}
+
+
+/* ========================================
+   BOOKING HEADER
+======================================== */
+
+.booking-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.booking-card-header p {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0 0 6px;
+}
+
+.booking-card-header h2 {
+    font-size: 22px;
+    margin: 0;
+}
+
+
+/* ========================================
+   STATUS
+======================================== */
+
+.status-confirmed,
+.status-cancelled {
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.status-confirmed {
+    background: #e8f7ee;
+}
+
+.status-cancelled {
+    background: #fce8e8;
+}
+
+
+/* ========================================
+   BOOKING DATES
+======================================== */
+
+.booking-dates {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.booking-dates div {
+    padding: 15px;
+    border-radius: 12px;
+    background: #f7f7f7;
+}
+
+.booking-dates span {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    margin-bottom: 7px;
+}
+
+.booking-dates strong {
+    display: block;
+    font-size: 14px;
+}
+
+
+/* ========================================
+   BOOKING DETAILS
+======================================== */
+
+.booking-detail-list {
+    margin-top: 18px;
+}
+
+.booking-detail-list div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 9px 0;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   TOTAL
+======================================== */
+
+.booking-total-row {
+    margin-top: 15px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #ddd;
+}
+
+.booking-total-row div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.booking-total-row span {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.booking-total-row strong {
+    font-size: 25px;
+}
+
+
+/* ========================================
+   CANCEL BUTTON
+======================================== */
+
+.cancel-booking-btn {
+    width: 100%;
+
+    margin-top: 20px;
+
+    border: none;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    background: #f3f4f6;
+}
+
+.cancel-booking-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   EMPTY BOOKINGS
+======================================== */
+
+.no-bookings {
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.06);
+}
+
+.no-bookings-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.no-bookings h2 {
+    margin: 0;
+    font-size: 26px;
+}
+
+.no-bookings p {
+    margin: 10px 0 25px;
+}
+
+.browse-vehicles-btn {
+    display: inline-block;
+
+    padding: 13px 22px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+/* ========================================
+   LOADING
+======================================== */
+
+.bookings-loading {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+
+/* ========================================
+   BOOKINGS RESPONSIVE
+======================================== */
+
+@media (max-width: 800px) {
+
+    .bookings-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .bookings-page {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .bookings-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .bookings-page-header h1 {
+        font-size: 30px;
+    }
+
+    .booking-dates {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-card-header {
+        flex-direction: column;
+    }
+
+    .booking-total-row strong {
+        font-size: 22px;
+    }
+
+}
+/* ========================================
+   FINAL RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .navbar-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .vehicles {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wishlist-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    /* Navbar */
+
+    .navbar {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .navbar-logo a {
+        font-size: 20px;
+    }
+
+    .navbar-links {
+        gap: 8px;
+    }
+
+    .navbar-links a {
+        font-size: 13px;
+    }
+
+    .navbar-auth {
+        width: 100%;
+        justify-content: center;
+    }
+
+
+    /* Main content */
+
+    main {
+        padding: 0 12px;
+    }
+
+
+    /* Vehicle cards */
+
+    .vehicles {
+        grid-template-columns: 1fr;
+    }
+
+    .vehicle-card {
+        width: 100%;
+    }
+
+
+    /* Vehicle controls */
+
+    .vehicle-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .vehicle-controls input,
+    .vehicle-controls select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    /* Wishlist */
+
+    .wishlist-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wishlist-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+
+    /* Buttons */
+
+    .card-actions {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .card-actions a,
+    .card-actions button {
+        width: 100%;
+    }
+
+
+    /* Details */
+
+    .vehicle-details-page {
+        padding: 0 10px;
+    }
+
+    .vehicle-details-card {
+        border-radius: 15px;
+    }
+
+
+    /* Booking */
+
+    .booking-page {
+        padding: 0 10px;
+    }
+
+    .booking-layout {
+        gap: 20px;
+    }
+
+    .booking-form-card {
+        padding: 20px 15px;
+    }
+
+
+    /* My Bookings */
+
+    .bookings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-dates {
+        grid-template-columns: 1fr;
+    }
+}
